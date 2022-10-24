@@ -1,3 +1,4 @@
+import re
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.contrib.auth.hashers import make_password
@@ -6,12 +7,11 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.authentication import TokenAuthentication
-from rest_framework.authtoken.models import Token 
 from rest_framework.permissions import IsAuthenticated
 
 
-from .serializers import DoctorSerializer, HospitalSerializer, PatientSerializer, UserSerializer
-from .models import Allergy, Hospital,Doctor,Patient
+from .serializers import AppointmentSerializer, DoctorSerializer, FeedBackSerializer, HospitalSerializer, PatientSerializer, UserSerializer,ServicesSerializer
+from .models import Allergy, Appointment, Hospital,Doctor,Patient, Services
 
 # Create your views here.
 def index(request):
@@ -25,6 +25,37 @@ class HospitalView(APIView):
         hospitals = Hospital.objects.all()
         serializer = HospitalSerializer(hospitals,many = True)
         return Response(serializer.data, status = status.HTTP_200_OK)
+
+class HospitalDatabaseView(APIView):
+    permission_classes = [IsAuthenticated]
+    authentication_classes = [TokenAuthentication]
+    def post(self, request):
+        user = self.request.user
+        if user.is_superuser:
+            serializer = HospitalSerializer(data = request.data)
+            if serializer.is_valid():
+                serializer.save()
+                return Response(serializer.data, status = status.HTTP_201_CREATED)
+            return Response(serializer.errors , status = status.HTTP_400_BAD_REQUEST)
+        return Response({"message" : "You are not allowed to do this operation "},status = status.HTTP_401_UNAUTHORIZED)
+
+    def put(self, request):
+        user = self.request.user
+        if user.is_superuser:
+            if request.data.get('id') is None: 
+                return Response({"message" : "Hospital ID Missing!!!"},status = status.HTTP_400_BAD_REQUEST)
+            elif len(Hospital.objects.filter(id = request.data.get('id'))) == 0 : 
+                return Response({"message" : "Hospital ID Missing in the Database"},status = status.HTTP_400_BAD_REQUEST)
+            else: 
+                hospital = Hospital.objects.get(id = request.data.get('id'))
+                serializer = HospitalSerializer(hospital , data = request.data)
+                if serializer.is_valid():
+                    serializer.save()
+                    return Response(serializer.data, status = status.HTTP_200_OK)
+                return Response(serializer.errors, status = status.HTTP_400_BAD_REQUEST)
+        return Response({"message" : "You are not allowed to perform this operation"},status = status.HTTP_401_UNAUTHORIZED)
+    
+
 
 class DoctorView(APIView):
     def get(self, request):
@@ -84,9 +115,12 @@ class SpecificPatientView(APIView):
         elif user.is_doctor: 
             if request.data.get("id") is None: 
                 return Response({"message": "Patient ID is Required"},status = status.HTTP_400_BAD_REQUEST)
-            patient = Patient.objects.get(id = request.data.get("id"))
-            serializer = PatientSerializer(patient)
-            return Response(serializer.data, status = status.HTTP_200_OK)
+            try:
+                patient = Patient.objects.get(id = request.data.get("id"))
+                serializer = PatientSerializer(patient)
+                return Response(serializer.data, status = status.HTTP_200_OK)
+            except: 
+                return Response({"message" : "Invalid Patient ID"},status = status.HTTP_400_BAD_REQUEST)
         return Response({"message" : "Invalid User!!"},status = status.HTTP_400_BAD_REQUEST)
 
     def put(self, request):
@@ -111,6 +145,135 @@ class SpecificPatientView(APIView):
 
         
         return Response({"message" : "Invalid User!!"},status = status.HTTP_400_BAD_REQUEST)
+
+
+class SpecificDoctorView(APIView):
+    permission_classes = [IsAuthenticated]
+    authentication_classes = [TokenAuthentication]
+    def get(self, request):
+        user = self.request.user
+        if user.is_doctor: 
+            doctor = Doctor.objects.get(doctor = user)
+            serializer = DoctorSerializer(doctor)
+            return Response(serializer.data, status = status.HTTP_200_OK)
+        elif user.is_patient: 
+            if request.data.get("id") is None: 
+                return Response({"message": "Doctor ID is Required"},status = status.HTTP_400_BAD_REQUEST)
+            try:
+                doctor = Doctor.objects.get(id = request.data.get("id"))
+                serializer = DoctorSerializer(doctor)
+                return Response(serializer.data, status = status.HTTP_200_OK)
+            except: 
+                return Response({"message" : "Invalid Doctor ID"},status = status.HTTP_400_BAD_REQUEST)
+        return Response({"message" : "Invalid User!!"},status = status.HTTP_400_BAD_REQUEST)
+
+
+class AppointmentView(APIView):
+    permission_classes = [IsAuthenticated]
+    authentication_classes = [TokenAuthentication]
+
+    # Get Appointment
+    def get(self, request):
+        user = self.request.user 
+        if user.is_patient: 
+            patient = Patient.objects.get(patient = user)
+            appointments = Appointment.objects.filter(patient = patient)
+            serializer = AppointmentSerializer(appointments,many = True)
+            return Response(serializer.data, status = status.HTTP_200_OK)
+        else: 
+            doctor = Doctor.objects.get(doctor = user)
+            appointments = Appointment.objects.filter(doctor = doctor)
+            serializer = AppointmentSerializer(appointments,many = True)
+            return Response(serializer.data, status = status.HTTP_200_OK)
+
+    # Book Appointment
+    def post(self, request):
+        user = self.request.user
+        if user.is_patient:
+            patient = Patient.objects.get(patient = user)
+            request.data.update({'patient' : patient.id})
+            serializer = AppointmentSerializer(data = request.data)
+            if serializer.is_valid():
+                serializer.save()
+                return Response(serializer.data, status = status.HTTP_201_CREATED)
+            return Response(serializer.errors,status = status.HTTP_400_BAD_REQUEST )
+
+        
+        return Response({"message" : "You can't Book Appointments" },status = status.HTTP_401_UNAUTHORIZED)
+
+    # Approve Appointment 
+    def put(self, request):
+        user = self.request.user 
+        if user.is_doctor: 
+            if request.data.get('id') is None: 
+                return Response({"message" : "Appintment ID is missing!!"},status = status.HTTP_400_BAD_REQUEST)
+            try:
+                appointment = Appointment.objects.get(id = request.data.get('id'))
+                appointment.approval = True 
+                appointment.save()
+                serializer = AppointmentSerializer(appointment)
+                return Response(serializer.data, status = status.HTTP_200_OK)
+            except: 
+                return Response({"message" : "Appointment ID is invalid!!"},status = status.HTTP_400_BAD_REQUEST)
+        return Response({"message" : "You are not allowed to do this operation"},status = status.HTTP_401_UNAUTHORIZED)
+
+class ServicesView(APIView):
+    permission_classes = [IsAuthenticated]
+    authentication_classes = [TokenAuthentication]
+    def get(self, request):
+        user = self.request.user
+        if user.is_doctor or user.is_superuser:
+            services = Services.objects.all()
+            serializer = ServicesSerializer(services,many = True)
+            return Response(serializer.data, status = status.HTTP_200_OK)
+        return Response({"Message" : "You are not authorized to access this"},status = status.HTTP_401_UNAUTHORIZED)
+
+
+    def post(self, request):
+        user = self.request.user 
+        if user.is_superuser:
+            serializer = ServicesSerializer(data = request.data)
+            if serializer.is_valid():
+                serializer.save()
+                return Response(serializer.data, status = status.HTTP_201_CREATED)
+            return Response(serializer.errors, status = status.HTTP_400_BAD_REQUEST)
+
+    def put(self, request):
+        user = self.request.user 
+        if user.is_superuser: 
+            if request.data.get('id') is None: 
+                return Response({"message" : "Service ID Missing!!!"},status = status.HTTP_400_BAD_REQUEST)
+            elif len(Services.objects.filter(id = request.data.get('id'))) == 0 : 
+                return Response({"message" : "Service ID Missing in the Database"},status = status.HTTP_400_BAD_REQUEST)
+            else: 
+                service = Services.objects.get(id = request.data.get('id'))
+                serializer = ServicesSerializer(service , data = request.data)
+                if serializer.is_valid():
+                    serializer.save()
+                    return Response(serializer.data, status = status.HTTP_200_OK)
+                return Response(serializer.errors, status = status.HTTP_400_BAD_REQUEST)
+        return Response({"message" : "You are not allowed to perform this operation"},status = status.HTTP_401_UNAUTHORIZED)
+           
+        
+
+class FeedBackView(APIView):
+    def post(self, request):
+        user = self.request.user
+        if user.is_patient: 
+            patient = Patient.objects.get(patient = user)
+            request.data.update({'patient' : patient.id})
+            serializer = FeedBackSerializer(data = request.data)
+            if serializer.is_valid():
+                serializer.save()
+                return Response(serializer.data, status = status.HTTP_201_CREATED)
+            return Response(serializer.errors,status = status.HTTP_400_BAD_REQUEST)
+        
+        return Response({"message" : "You are not allowed to submit Feedbacks"},
+        status = status.HTTP_401_UNAUTHORIZED)
+
+
+
+
         
     
 
