@@ -14,7 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.urls import path
-from .views import HospitalDatabaseView, PatientView, ServicesView, SpecificDoctorView, UserRegistrationView, index,HospitalView,DoctorView,SpecificPatientView,AppointmentView
+from .views import HospitalDatabaseView, MedicalTestView, OperationTestView, PatientView, PrescriptionView, ServicesView, SpecificDoctorView, UserRegistrationView, index,HospitalView,DoctorView,SpecificPatientView,AppointmentView,FeedBackView,OpenFeedBackViews
 from rest_framework.authtoken.views import obtain_auth_token
 
 urlpatterns = [
@@ -24,12 +24,17 @@ urlpatterns = [
     path("patient/",PatientView.as_view(),name = "patient"),
     path('specificpatientview/',SpecificPatientView.as_view(),name = "specificpatient"),
     path('specificdoctorview/',SpecificDoctorView.as_view(),name= "specificdoctor"),
-    path('appointments/',AppointmentView.as_view(),name = "Appointments"),
-    # path("feedback/",Feed)
+    path('appointments/',AppointmentView.as_view(),name = "appointments"),
+    path("feedback/",FeedBackView.as_view(),name="feedbacks"),
+    path('openfeedback/',OpenFeedBackViews.as_view(),name="openfeedback"),
+    
+    
+    path('prescriptions/',PrescriptionView.as_view(),name="prescription"),
+    path('medicaltests/',MedicalTestView.as_view(),name = "medicaltest"),
+    path('operations/',OperationTestView.as_view(),name = "operationtest"),
 
     path("signup/",UserRegistrationView.as_view(),name = "registration"),
     path("login/",obtain_auth_token,name ="login"),
-
     path("hospitaldatabaseview/",HospitalDatabaseView.as_view(),name = "hospitaldatabaseview"),
     path("servicesview/",ServicesView.as_view(),name = "services")
 

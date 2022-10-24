@@ -107,20 +107,20 @@ class Feedback(models.Model):
     doctor = models.ForeignKey(Doctor, on_delete = models.CASCADE)
     patient = models.ForeignKey(Patient, on_delete = models.CASCADE)
     treatment_rating = models.IntegerField(
-        default = 0, null = False, blank = False, 
+       null = False, blank = False, 
         validators = [MinValueValidator(0),MaxValueValidator(10)]
     )
     communication_rating = models.IntegerField(
-        default = 0, null = False, blank = False, 
+       null = False, blank = False, 
         validators = [MinValueValidator(0),MaxValueValidator(10)]
 
     )
     collaboration_rating = models.IntegerField(
-        default = 0, null = False, blank = False, 
+       null = False, blank = False, 
         validators = [MinValueValidator(0),MaxValueValidator(10)]
     )
     availability = models.IntegerField(
-        default = 0, null = False, blank = False, 
+       null = False, blank = False, 
         validators = [MinValueValidator(0),MaxValueValidator(10)]
     )
     reviews = models.TextField(blank = True, null = True)
@@ -129,4 +129,56 @@ class Feedback(models.Model):
 
 
 
+class MedicinesforPrescription(models.Model):
 
+    TIME_CHOICES = (
+        ("Morning Before Breakfast","Morning Before Breakfast"),
+        ("Morning After Breakfast","Morning After Breakfast"),
+        ("Afternoon Before Lunch","Afternoon Before Lunch"),
+        ("Afternoon After Lunch","Afternoon After Lunch"),
+        ("Night Before Dinner","Night Before Dinner"),
+        ("Night After Dinner","Afternoon After Dinner"),
+       
+    )
+
+    name = models.CharField(max_length = 100, null = False, blank = False)
+    time_to_taken = models.CharField(max_length = 100,choices = TIME_CHOICES)
+    cost = models.IntegerField(null = False, blank = False)
+
+
+class Prescription(models.Model):
+    patient = models.ForeignKey(Patient, on_delete = models.CASCADE)
+    doctor = models.ForeignKey(Doctor, on_delete = models.CASCADE)
+    days = models.IntegerField(null = False, blank = False)
+    follow_up = models.BooleanField(null = False, blank = False)
+    date = models.DateField(auto_now_add = True)
+    medicines = models.ManyToManyField(MedicinesforPrescription)
+    symptoms = models.TextField(null = False, blank = False)
+    payment_deadline= models.DateField(blank = True, null = True)
+    paid = models.BooleanField(default = False, null = True, blank = True)
+
+class MedicalTestAvailable(models.Model):
+    name = models.CharField(max_length = 100, null = False, blank = False)
+    recommendation = models.CharField(max_length = 200, null = False, blank = False)
+    cost = models.IntegerField(null = False, blank = False)
+
+class MedicineTest(models.Model):
+    patient = models.ForeignKey(Patient,on_delete = models.CASCADE)
+    doctor = models.ForeignKey(Doctor,on_delete = models.CASCADE)
+    tests = models.ManyToManyField(MedicalTestAvailable)
+    payment_deadline = models.DateField(blank = True, null = True)
+    paid = models.BooleanField(default = False, null = False, blank = False)
+    
+
+class OperationsAvailable(models.Model):
+    name = models.CharField(max_length = 100, null = False, blank = False)
+    recommendation = models.CharField(max_length = 200, null = False, blank = False)
+    cost = models.IntegerField(null = False, blank = False)
+
+class OperationTest(models.Model):
+    patient = models.ForeignKey(Patient,on_delete = models.CASCADE)
+    doctor = models.ForeignKey(Doctor, on_delete = models.CASCADE)
+    operations = models.ManyToManyField(OperationsAvailable)
+    payment_deadline = models.DateField(blank = True, null = True)
+    paid = models.BooleanField(default = False, blank = False, null = False)
+    
