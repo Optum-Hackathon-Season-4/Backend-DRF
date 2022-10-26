@@ -1,0 +1,101 @@
+2022-10-26 18:35:44,639:WARNING:
+'cuml' is a soft dependency and not included in the pycaret installation. Please run: `pip install cuml` to install.
+2022-10-26 18:35:44,639:WARNING:
+'cuml' is a soft dependency and not included in the pycaret installation. Please run: `pip install cuml` to install.
+2022-10-26 18:35:44,639:WARNING:
+'cuml' is a soft dependency and not included in the pycaret installation. Please run: `pip install cuml` to install.
+2022-10-26 18:35:44,639:WARNING:
+'cuml' is a soft dependency and not included in the pycaret installation. Please run: `pip install cuml` to install.
+2022-10-26 18:35:45,595:WARNING:
+'prophet' is a soft dependency and not included in the pycaret installation. Please run: `pip install prophet` to install.
+2022-10-26 18:35:46,139:INFO:Initializing load_model()
+2022-10-26 18:35:46,139:INFO:load_model(model_name=lrmodelfile, platform=None, authentication=None, verbose=True)
+2022-10-26 18:36:07,723:WARNING:
+'cuml' is a soft dependency and not included in the pycaret installation. Please run: `pip install cuml` to install.
+2022-10-26 18:36:07,723:WARNING:
+'cuml' is a soft dependency and not included in the pycaret installation. Please run: `pip install cuml` to install.
+2022-10-26 18:36:07,723:WARNING:
+'cuml' is a soft dependency and not included in the pycaret installation. Please run: `pip install cuml` to install.
+2022-10-26 18:36:07,723:WARNING:
+'cuml' is a soft dependency and not included in the pycaret installation. Please run: `pip install cuml` to install.
+2022-10-26 18:36:08,608:WARNING:
+'prophet' is a soft dependency and not included in the pycaret installation. Please run: `pip install prophet` to install.
+2022-10-26 18:36:09,102:INFO:Initializing load_model()
+2022-10-26 18:36:09,102:INFO:load_model(model_name=./lrmodelfile, platform=None, authentication=None, verbose=True)
+2022-10-26 18:37:17,393:WARNING:
+'cuml' is a soft dependency and not included in the pycaret installation. Please run: `pip install cuml` to install.
+2022-10-26 18:37:17,393:WARNING:
+'cuml' is a soft dependency and not included in the pycaret installation. Please run: `pip install cuml` to install.
+2022-10-26 18:37:17,393:WARNING:
+'cuml' is a soft dependency and not included in the pycaret installation. Please run: `pip install cuml` to install.
+2022-10-26 18:37:17,393:WARNING:
+'cuml' is a soft dependency and not included in the pycaret installation. Please run: `pip install cuml` to install.
+2022-10-26 18:37:18,222:WARNING:
+'prophet' is a soft dependency and not included in the pycaret installation. Please run: `pip install prophet` to install.
+2022-10-26 18:37:18,694:INFO:Initializing load_model()
+2022-10-26 18:37:18,694:INFO:load_model(model_name=./lrmodelfile, platform=None, authentication=None, verbose=True)
+2022-10-26 18:40:55,539:WARNING:
+'cuml' is a soft dependency and not included in the pycaret installation. Please run: `pip install cuml` to install.
+2022-10-26 18:40:55,539:WARNING:
+'cuml' is a soft dependency and not included in the pycaret installation. Please run: `pip install cuml` to install.
+2022-10-26 18:40:55,539:WARNING:
+'cuml' is a soft dependency and not included in the pycaret installation. Please run: `pip install cuml` to install.
+2022-10-26 18:40:55,543:WARNING:
+'cuml' is a soft dependency and not included in the pycaret installation. Please run: `pip install cuml` to install.
+2022-10-26 18:40:57,641:WARNING:
+'prophet' is a soft dependency and not included in the pycaret installation. Please run: `pip install prophet` to install.
+2022-10-26 18:40:58,895:INFO:Initializing load_model()
+2022-10-26 18:40:58,895:INFO:load_model(model_name=./lrmodelfile, platform=None, authentication=None, verbose=True)
+2022-10-26 18:41:39,375:WARNING:
+'cuml' is a soft dependency and not included in the pycaret installation. Please run: `pip install cuml` to install.
+2022-10-26 18:41:39,375:WARNING:
+'cuml' is a soft dependency and not included in the pycaret installation. Please run: `pip install cuml` to install.
+2022-10-26 18:41:39,375:WARNING:
+'cuml' is a soft dependency and not included in the pycaret installation. Please run: `pip install cuml` to install.
+2022-10-26 18:41:39,377:WARNING:
+'cuml' is a soft dependency and not included in the pycaret installation. Please run: `pip install cuml` to install.
+2022-10-26 18:41:41,600:WARNING:
+'prophet' is a soft dependency and not included in the pycaret installation. Please run: `pip install prophet` to install.
+2022-10-26 18:41:43,129:INFO:Initializing load_model()
+2022-10-26 18:41:43,129:INFO:load_model(model_name=lrmodelfile, platform=None, authentication=None, verbose=True)
+2022-10-26 18:42:09,936:WARNING:
+'cuml' is a soft dependency and not included in the pycaret installation. Please run: `pip install cuml` to install.
+2022-10-26 18:42:09,936:WARNING:
+'cuml' is a soft dependency and not included in the pycaret installation. Please run: `pip install cuml` to install.
+2022-10-26 18:42:09,936:WARNING:
+'cuml' is a soft dependency and not included in the pycaret installation. Please run: `pip install cuml` to install.
+2022-10-26 18:42:09,937:WARNING:
+'cuml' is a soft dependency and not included in the pycaret installation. Please run: `pip install cuml` to install.
+2022-10-26 18:42:11,971:WARNING:
+'prophet' is a soft dependency and not included in the pycaret installation. Please run: `pip install prophet` to install.
+2022-10-26 18:42:13,558:INFO:Initializing load_model()
+2022-10-26 18:42:13,558:INFO:load_model(model_name=lrmodelfile, platform=None, authentication=None, verbose=True)
+2022-10-26 18:42:28,442:INFO:Initializing load_model()
+2022-10-26 18:42:28,442:INFO:load_model(model_name=lrmodelfile, platform=None, authentication=None, verbose=True)
+2022-10-26 18:42:28,474:INFO:Initializing predict_model()
+2022-10-26 18:42:28,474:INFO:predict_model(self=<pycaret.classification.oop.ClassificationExperiment object at 0x000002096D089690>, estimator=Pipeline(memory=Memory(location=C:\Users\SANIDH~1\AppData\Local\Temp\joblib),
+         steps=[('label_encoding',
+                 TransformerWrapperWithInverse(transformer=LabelEncoder())),
+                ('numerical_imputer',
+                 TransformerWrapper(include=['itching', 'skin_rash',
+                                             'nodal_skin_eruptions',
+                                             'continuous_sneezing', 'shivering',
+                                             'chills', 'joint_pain',
+                                             'stomach_pain', 'acidity',
+                                             'ulcers_on_ton...
+                                             'breathlessness', 'sweating',
+                                             'dehydration', ...],
+                                    transformer=SimpleImputer())),
+                ('categorical_imputer',
+                 TransformerWrapper(include=[],
+                                    transformer=SimpleImputer(fill_value='constant',
+                                                              strategy='constant'))),
+                ('low_variance',
+                 TransformerWrapper(exclude=[],
+                                    transformer=VarianceThreshold(threshold=0))),
+                ('trained_model',
+                 LogisticRegression(max_iter=1000, random_state=6626))]), probability_threshold=None, encoded_labels=False, raw_score=False, drift_report=False, round=4, verbose=True, ml_usecase=None, preprocess=True, replace_labels_in_column=<function _SupervisedExperiment.predict_model.<locals>.replace_labels_in_column at 0x000002096CBFBAC0>)
+2022-10-26 18:42:28,474:INFO:Checking exceptions
+2022-10-26 18:42:28,474:INFO:Preloading libraries
+2022-10-26 18:42:28,474:INFO:Set up data.
+2022-10-26 18:42:28,552:INFO:Set up index.
