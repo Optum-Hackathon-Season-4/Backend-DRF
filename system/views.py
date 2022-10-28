@@ -429,8 +429,10 @@ class FeedBackView(APIView):
             
             feedback = Feedback.objects.get(id = request.data.get("id"))
             feedback.approved = True 
+            feedback.save()
             serializer = FeedBackSerializer(feedback)
-            return Response(serializer.data, status = status.HTTP_200_OK)
+            
+            return Response(serializer.errors,status = status.HTTP_400_BAD_REQUEST )
         
 
         
@@ -438,12 +440,11 @@ class FeedBackView(APIView):
 
 
 class OpenFeedBackViews(APIView):
-    def get(self, request):
-        if request.data.get('id') is None: 
-            return Response({"message" : "Doctor ID missing"},status = status.HTTP_400_BAD_REQUEST)
-        elif len(Doctor.objects.filter(id = request.data.get('id'))) == 0:
+    def get(self, request,id):
+        
+        if len(Doctor.objects.filter(id = id)) == 0:
             return Response({"message" : "Invalid Doctor ID"},status = status.HTTP_400_BAD_REQUEST)
-        feedbacks = Feedback.objects.filter(doctor = Doctor.objects.get(id = request.data.get('id')))
+        feedbacks = Feedback.objects.filter(doctor = Doctor.objects.get(id = id))
         serializer = FeedBackSerializer(feedbacks,many = True)
         return Response(serializer.data,status = status.HTTP_200_OK) 
 
@@ -676,25 +677,33 @@ class OperationTestView(APIView):
     
 @api_view(['GET'])
 def get_reviews(request):
-    positive,negative,neutral = 0,0,0
-
-    if request.data.get('id') is None: 
-        return Response({"message" : "Doctor ID missing"},status = status.HTTP_400_BAD_REQUEST)
-    elif len(Doctor.objects.filter(id= request.data.get('id'))) == 0:
-        return Response({"message" : "Invalid Doctor ID"},status = status.HTTP_400_BAD_REQUEST)
-    doctor = Doctor.objects.get( id = request.data.get('id'))
-    reviews = Feedback.objects.filter(doctor = doctor)
-    for review in reviews:
-        obj = TextBlob(review.reviews)
-        if obj.sentiment.polarity == 0: neutral += 1
-        elif obj.sentiment.polarity < 0 : negative += 1
-        else : positive += 1
-
+    if request.data.get("text") is None: 
+        return Response({"message" : "No Test for Analysis"},status = status.HTTP_400_BAD_REQUEST)
+    obj = TextBlob(request.data.get("text"))
+    check_type = ""
+    if obj.sentiment.polarity == 0: check_type = "neutral"
+    elif obj.sentiment.polarity > 0: check_type = "positive"
+    else: check_type = "neutral"
     return Response({
-        "positive" : positive,
-        "negative" : negative,
-        "neutral" : neutral
+        "message" : check_type
     },status = status.HTTP_200_OK)
+    # if request.data.get('id') is None: 
+    #     return Response({"message" : "Doctor ID missing"},status = status.HTTP_400_BAD_REQUEST)
+    # elif len(Doctor.objects.filter(id= request.data.get('id'))) == 0:
+    #     return Response({"message" : "Invalid Doctor ID"},status = status.HTTP_400_BAD_REQUEST)
+    # doctor = Doctor.objects.get( id = request.data.get('id'))
+    # reviews = Feedback.objects.filter(doctor = doctor)
+    # for review in reviews:
+    #     obj = TextBlob(review.reviews)
+    #     if obj.sentiment.polarity == 0: neutral += 1
+    #     elif obj.sentiment.polarity < 0 : negative += 1
+    #     else : positive += 1
+
+    # return Response({
+    #     "positive" : positive,
+    #     "negative" : negative,
+    #     "neutral" : neutral
+    # },status = status.HTTP_200_OK)
 
 @api_view(['POST'])
 def doctor_recommendation(request):

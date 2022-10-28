@@ -28,7 +28,7 @@ urlpatterns = [
     path('specificdoctorview/',SpecificDoctorView.as_view(),name= "specificdoctor"),
     path('appointments/',AppointmentView.as_view(),name = "appointments"),
     path("feedback/",FeedBackView.as_view(),name="feedbacks"),
-    path('openfeedback/',OpenFeedBackViews.as_view(),name="openfeedback"),
+    path('openfeedback/<int:id>',OpenFeedBackViews.as_view(),name="openfeedback"),
     
     
     path('prescriptions/',PrescriptionView.as_view(),name="prescription"),
