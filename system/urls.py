@@ -32,8 +32,14 @@ urlpatterns = [
     
     
     path('prescriptions/',PrescriptionView.as_view(),name="prescription"),
+    path('prescriptions/<int:id>',PrescriptionView.as_view(),name="prescription"),
+
     path('medicaltests/',MedicalTestView.as_view(),name = "medicaltest"),
+    path('medicaltests/<int:id>',MedicalTestView.as_view(),name = "medicaltest"),
+
     path('operations/',OperationTestView.as_view(),name = "operationtest"),
+    path('operations/<int:id>',OperationTestView.as_view(),name = "operationtest"),
+
 
     path("signup/",UserRegistrationView.as_view(),name = "registration"),
     path("login/",obtain_auth_token,name ="login"),

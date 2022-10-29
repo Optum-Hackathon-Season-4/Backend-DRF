@@ -453,18 +453,18 @@ class PrescriptionView(APIView):
     permission_classes = [IsAuthenticated]
     authentication_classes = [TokenAuthentication]
 
-    def get(self, request):
+    def get(self, request,id = None):
         user = self.request.user 
         if user.is_patient: 
             patient = Patient.objects.get(patient = user)
             prescriptions = Prescription.objects.filter(patient = patient)
             serializer = PrescriptionSerializer(prescriptions,many = True)
             return Response(serializer.data, status = status.HTTP_200_OK)
-        if request.data.get("id") is None: 
+        if id is None: 
             return Response({"message": "Patient ID Missing"}, status = status.HTTP_400_BAD_REQUEST)
-        elif len(Patient.objects.filter(id = request.data.get('id'))) == 0 :
+        elif len(Patient.objects.filter(id = id)) == 0 :
             return Response({"message" : "Patiend ID not in database"})
-        patient = Patient.objects.get(id = request.data.get("id"))
+        patient = Patient.objects.get(id = id)
         prescriptions = Prescription.objects.filter(patient = patient)
         serializer = PrescriptionSerializer(prescriptions,many = True)
         return Response(serializer.data, status = status.HTTP_200_OK)
@@ -530,18 +530,18 @@ class MedicalTestView(APIView):
     permission_classes = [IsAuthenticated]
     authentication_classes = [TokenAuthentication]
 
-    def get(self, request):
+    def get(self, request,id = None):
         user = self.request.user 
         if user.is_patient: 
             patient = Patient.objects.get(patient = user)
             medicaltests = MedicineTest.objects.filter(patient = patient)
             serializer = MedicineTestSerializer(medicaltests,many = True)
             return Response(serializer.data, status = status.HTTP_200_OK)
-        if request.data.get("id") is None: 
+        if id is None: 
             return Response({"message": "Patient ID Missing"}, status = status.HTTP_400_BAD_REQUEST)
-        elif len(Patient.objects.filter(id = request.data.get('id'))) == 0 :
+        elif len(Patient.objects.filter(id = id)) == 0 :
             return Response({"message" : "Patiend ID not in database"})
-        patient = Patient.objects.get(id = request.data.get("id"))
+        patient = Patient.objects.get(id = id)
         medicinetests = MedicineTest.objects.filter(patient = patient)
         serializer = MedicineTestSerializer(medicinetests,many = True)
         return Response(serializer.data, status = status.HTTP_200_OK)
@@ -606,18 +606,18 @@ class OperationTestView(APIView):
     permission_classes = [IsAuthenticated]
     authentication_classes = [TokenAuthentication]
 
-    def get(self, request):
+    def get(self, request,id = None):
         user = self.request.user 
         if user.is_patient: 
             patient = Patient.objects.get(patient = user)
             operationtest = OperationTest.objects.filter(patient = patient)
             serializer = OperationTestSerializer(operationtest,many = True)
             return Response(serializer.data, status = status.HTTP_200_OK)
-        if request.data.get("id") is None: 
+        if id is None: 
             return Response({"message": "Patient ID Missing"}, status = status.HTTP_400_BAD_REQUEST)
-        elif len(Patient.objects.filter(id = request.data.get('id'))) == 0 :
+        elif len(Patient.objects.filter(id = id)) == 0 :
             return Response({"message" : "Patiend ID not in database"})
-        patient = Patient.objects.get(id = request.data.get("id"))
+        patient = Patient.objects.get(id = id)
         operations = OperationTest.objects.filter(patient = patient)
         serializer = OperationTestSerializer(operations,many = True)
         return Response(serializer.data, status = status.HTTP_200_OK)
@@ -675,7 +675,7 @@ class OperationTestView(APIView):
 
         return Response({"message" : "You are not Authorized to do this operation"},status = status.HTTP_401_UNAUTHORIZED)
     
-@api_view(['GET'])
+@api_view(['POST'])
 def get_reviews(request):
     if request.data.get("text") is None: 
         return Response({"message" : "No Test for Analysis"},status = status.HTTP_400_BAD_REQUEST)
