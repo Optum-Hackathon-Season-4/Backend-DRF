@@ -153,6 +153,11 @@ features = ["itching",
 ]
 
 
+disease_to_specialization_mapping = {'fungal infection': 'dermatologist', 'allergy': 'allergist', 'gerd': 'gastroenterologist', 'chronic cholestasis': 'hepatologist', 'drug reaction': 'allergist', 'peptic ulcer diseae': 'gastroenterologist', 'aids': 'hiv specialist', 'diabetes ': 'endocrinologist', 'gastroenteritis': 'gastroenterologists', 'bronchial asthma': 'pulmonologist', 'hypertension ': 'cardiologist', 'migraine': 'neurologist', 'cervical spondylosis': 'neurosurgeon', 'paralysis (brain hemorrhage)': 'neurologist ', 'jaundice': 'gastroenterologist', 'malaria': 'infectionspecialist', 'chicken pox': 'infectionspecialist', 'dengue': 'infectionspecialist', 'typhoid': 'infectionspecialist', 'hepatitis a': 'hepatologist', 'hepatitis b': 'gastroenterologists', 'hepatitis c': 'hepatologist or gastroenterologist', 'hepatitis d': 'hepatologists', 'hepatitis e': 'hepatologists', 'alcoholic hepatitis': 'hepatologists', 'tuberculosis': 'pulmonologist', 'common cold': 'otolaryngologist.', 'pneumonia': 'pulmonologist', 'dimorphic hemmorhoids(piles)': 'proctologist', 'heart attack': 'cardiologist', 'varicose veins': 'phlebologists', 'hypothyroidism': 'endocrinologist', 'hyperthyroidism': 'endocrinologist', 'hypoglycemia': 'endocrinologist', 'osteoarthristis': 'orthopedist', 'arthritis': 'rheumatologist', '(vertigo) paroymsal  positional vertigo': 'otolaryngologist', 'acne': 'dermatologist', 'urinary tract infection': 'urologist', 'psoriasis': 'dermatologist', 'impetigo': 'dermatologist '}
+
+
+
+
 # Create your views here.
 def index(request):
     return HttpResponse("Server Working !!! ")
@@ -723,6 +728,8 @@ def doctor_recommendation(request):
     lr = load_model('lrmodelfile')
     predictions = predict_model(lr, data = df)    
 
-    return Response({"Symptomps" : predictions['prediction_label'].values[0]},status = status.HTTP_200_OK)
+
+    return Response({"Symptomps" : predictions['prediction_label'].values[0],
+    "Specialization" : disease_to_specialization_mapping[predictions['prediction_label'].values[0].lower()].capitalize()},status = status.HTTP_200_OK)
 
 

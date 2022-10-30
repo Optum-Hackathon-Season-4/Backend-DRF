@@ -138,3 +138,255 @@
 2022-10-29 11:09:06,394:INFO:Preloading libraries
 2022-10-29 11:09:06,394:INFO:Set up data.
 2022-10-29 11:09:06,506:INFO:Set up index.
+2022-10-30 11:37:38,474:WARNING:
+'cuml' is a soft dependency and not included in the pycaret installation. Please run: `pip install cuml` to install.
+2022-10-30 11:37:38,487:WARNING:
+'cuml' is a soft dependency and not included in the pycaret installation. Please run: `pip install cuml` to install.
+2022-10-30 11:37:38,487:WARNING:
+'cuml' is a soft dependency and not included in the pycaret installation. Please run: `pip install cuml` to install.
+2022-10-30 11:37:38,487:WARNING:
+'cuml' is a soft dependency and not included in the pycaret installation. Please run: `pip install cuml` to install.
+2022-10-30 11:37:42,771:WARNING:
+'prophet' is a soft dependency and not included in the pycaret installation. Please run: `pip install prophet` to install.
+2022-10-30 11:37:45,423:INFO:Initializing load_model()
+2022-10-30 11:37:45,423:INFO:load_model(model_name=lrmodelfile, platform=None, authentication=None, verbose=True)
+2022-10-30 11:37:45,459:INFO:Initializing predict_model()
+2022-10-30 11:37:45,459:INFO:predict_model(self=<pycaret.classification.oop.ClassificationExperiment object at 0x000001FC3F7B47F0>, estimator=Pipeline(memory=Memory(location=C:\Users\SANIDH~1\AppData\Local\Temp\joblib),
+         steps=[('label_encoding',
+                 TransformerWrapperWithInverse(transformer=LabelEncoder())),
+                ('numerical_imputer',
+                 TransformerWrapper(include=['itching', 'skin_rash',
+                                             'nodal_skin_eruptions',
+                                             'continuous_sneezing', 'shivering',
+                                             'chills', 'joint_pain',
+                                             'stomach_pain', 'acidity',
+                                             'ulcers_on_ton...
+                                             'breathlessness', 'sweating',
+                                             'dehydration', ...],
+                                    transformer=SimpleImputer())),
+                ('categorical_imputer',
+                 TransformerWrapper(include=[],
+                                    transformer=SimpleImputer(fill_value='constant',
+                                                              strategy='constant'))),
+                ('low_variance',
+                 TransformerWrapper(exclude=[],
+                                    transformer=VarianceThreshold(threshold=0))),
+                ('trained_model',
+                 LogisticRegression(max_iter=1000, random_state=6626))]), probability_threshold=None, encoded_labels=False, raw_score=False, drift_report=False, round=4, verbose=True, ml_usecase=None, preprocess=True, replace_labels_in_column=<function _SupervisedExperiment.predict_model.<locals>.replace_labels_in_column at 0x000001FC4846D2D0>)
+2022-10-30 11:37:45,459:INFO:Checking exceptions
+2022-10-30 11:37:45,459:INFO:Preloading libraries
+2022-10-30 11:37:45,459:INFO:Set up data.
+2022-10-30 11:37:45,513:INFO:Set up index.
+2022-10-30 11:38:10,690:WARNING:
+'cuml' is a soft dependency and not included in the pycaret installation. Please run: `pip install cuml` to install.
+2022-10-30 11:38:10,690:WARNING:
+'cuml' is a soft dependency and not included in the pycaret installation. Please run: `pip install cuml` to install.
+2022-10-30 11:38:10,690:WARNING:
+'cuml' is a soft dependency and not included in the pycaret installation. Please run: `pip install cuml` to install.
+2022-10-30 11:38:10,690:WARNING:
+'cuml' is a soft dependency and not included in the pycaret installation. Please run: `pip install cuml` to install.
+2022-10-30 11:38:12,858:WARNING:
+'prophet' is a soft dependency and not included in the pycaret installation. Please run: `pip install prophet` to install.
+2022-10-30 11:38:14,457:INFO:Initializing load_model()
+2022-10-30 11:38:14,457:INFO:load_model(model_name=lrmodelfile, platform=None, authentication=None, verbose=True)
+2022-10-30 11:38:14,490:INFO:Initializing predict_model()
+2022-10-30 11:38:14,490:INFO:predict_model(self=<pycaret.classification.oop.ClassificationExperiment object at 0x00000189C5597D30>, estimator=Pipeline(memory=Memory(location=C:\Users\SANIDH~1\AppData\Local\Temp\joblib),
+         steps=[('label_encoding',
+                 TransformerWrapperWithInverse(transformer=LabelEncoder())),
+                ('numerical_imputer',
+                 TransformerWrapper(include=['itching', 'skin_rash',
+                                             'nodal_skin_eruptions',
+                                             'continuous_sneezing', 'shivering',
+                                             'chills', 'joint_pain',
+                                             'stomach_pain', 'acidity',
+                                             'ulcers_on_ton...
+                                             'breathlessness', 'sweating',
+                                             'dehydration', ...],
+                                    transformer=SimpleImputer())),
+                ('categorical_imputer',
+                 TransformerWrapper(include=[],
+                                    transformer=SimpleImputer(fill_value='constant',
+                                                              strategy='constant'))),
+                ('low_variance',
+                 TransformerWrapper(exclude=[],
+                                    transformer=VarianceThreshold(threshold=0))),
+                ('trained_model',
+                 LogisticRegression(max_iter=1000, random_state=6626))]), probability_threshold=None, encoded_labels=False, raw_score=False, drift_report=False, round=4, verbose=True, ml_usecase=None, preprocess=True, replace_labels_in_column=<function _SupervisedExperiment.predict_model.<locals>.replace_labels_in_column at 0x00000189C557DD80>)
+2022-10-30 11:38:14,490:INFO:Checking exceptions
+2022-10-30 11:38:14,490:INFO:Preloading libraries
+2022-10-30 11:38:14,490:INFO:Set up data.
+2022-10-30 11:38:14,559:INFO:Set up index.
+2022-10-30 11:42:58,834:INFO:Initializing load_model()
+2022-10-30 11:42:58,835:INFO:load_model(model_name=lrmodelfile, platform=None, authentication=None, verbose=True)
+2022-10-30 11:42:58,855:INFO:Initializing predict_model()
+2022-10-30 11:42:58,855:INFO:predict_model(self=<pycaret.classification.oop.ClassificationExperiment object at 0x00000189CC0FB9D0>, estimator=Pipeline(memory=Memory(location=C:\Users\SANIDH~1\AppData\Local\Temp\joblib),
+         steps=[('label_encoding',
+                 TransformerWrapperWithInverse(transformer=LabelEncoder())),
+                ('numerical_imputer',
+                 TransformerWrapper(include=['itching', 'skin_rash',
+                                             'nodal_skin_eruptions',
+                                             'continuous_sneezing', 'shivering',
+                                             'chills', 'joint_pain',
+                                             'stomach_pain', 'acidity',
+                                             'ulcers_on_ton...
+                                             'breathlessness', 'sweating',
+                                             'dehydration', ...],
+                                    transformer=SimpleImputer())),
+                ('categorical_imputer',
+                 TransformerWrapper(include=[],
+                                    transformer=SimpleImputer(fill_value='constant',
+                                                              strategy='constant'))),
+                ('low_variance',
+                 TransformerWrapper(exclude=[],
+                                    transformer=VarianceThreshold(threshold=0))),
+                ('trained_model',
+                 LogisticRegression(max_iter=1000, random_state=6626))]), probability_threshold=None, encoded_labels=False, raw_score=False, drift_report=False, round=4, verbose=True, ml_usecase=None, preprocess=True, replace_labels_in_column=<function _SupervisedExperiment.predict_model.<locals>.replace_labels_in_column at 0x00000189CD983D00>)
+2022-10-30 11:42:58,855:INFO:Checking exceptions
+2022-10-30 11:42:58,855:INFO:Preloading libraries
+2022-10-30 11:42:58,855:INFO:Set up data.
+2022-10-30 11:42:58,901:INFO:Set up index.
+2022-10-30 11:55:39,658:INFO:Initializing load_model()
+2022-10-30 11:55:39,658:INFO:load_model(model_name=lrmodelfile, platform=None, authentication=None, verbose=True)
+2022-10-30 11:55:39,688:INFO:Initializing predict_model()
+2022-10-30 11:55:39,688:INFO:predict_model(self=<pycaret.classification.oop.ClassificationExperiment object at 0x00000189CB1A3F10>, estimator=Pipeline(memory=Memory(location=C:\Users\SANIDH~1\AppData\Local\Temp\joblib),
+         steps=[('label_encoding',
+                 TransformerWrapperWithInverse(transformer=LabelEncoder())),
+                ('numerical_imputer',
+                 TransformerWrapper(include=['itching', 'skin_rash',
+                                             'nodal_skin_eruptions',
+                                             'continuous_sneezing', 'shivering',
+                                             'chills', 'joint_pain',
+                                             'stomach_pain', 'acidity',
+                                             'ulcers_on_ton...
+                                             'breathlessness', 'sweating',
+                                             'dehydration', ...],
+                                    transformer=SimpleImputer())),
+                ('categorical_imputer',
+                 TransformerWrapper(include=[],
+                                    transformer=SimpleImputer(fill_value='constant',
+                                                              strategy='constant'))),
+                ('low_variance',
+                 TransformerWrapper(exclude=[],
+                                    transformer=VarianceThreshold(threshold=0))),
+                ('trained_model',
+                 LogisticRegression(max_iter=1000, random_state=6626))]), probability_threshold=None, encoded_labels=False, raw_score=False, drift_report=False, round=4, verbose=True, ml_usecase=None, preprocess=True, replace_labels_in_column=<function _SupervisedExperiment.predict_model.<locals>.replace_labels_in_column at 0x00000189CDCD03A0>)
+2022-10-30 11:55:39,688:INFO:Checking exceptions
+2022-10-30 11:55:39,688:INFO:Preloading libraries
+2022-10-30 11:55:39,690:INFO:Set up data.
+2022-10-30 11:55:39,743:INFO:Set up index.
+2022-10-30 11:56:02,214:INFO:Initializing load_model()
+2022-10-30 11:56:02,214:INFO:load_model(model_name=lrmodelfile, platform=None, authentication=None, verbose=True)
+2022-10-30 11:56:02,251:INFO:Initializing predict_model()
+2022-10-30 11:56:02,255:INFO:predict_model(self=<pycaret.classification.oop.ClassificationExperiment object at 0x00000189CE509D50>, estimator=Pipeline(memory=Memory(location=C:\Users\SANIDH~1\AppData\Local\Temp\joblib),
+         steps=[('label_encoding',
+                 TransformerWrapperWithInverse(transformer=LabelEncoder())),
+                ('numerical_imputer',
+                 TransformerWrapper(include=['itching', 'skin_rash',
+                                             'nodal_skin_eruptions',
+                                             'continuous_sneezing', 'shivering',
+                                             'chills', 'joint_pain',
+                                             'stomach_pain', 'acidity',
+                                             'ulcers_on_ton...
+                                             'breathlessness', 'sweating',
+                                             'dehydration', ...],
+                                    transformer=SimpleImputer())),
+                ('categorical_imputer',
+                 TransformerWrapper(include=[],
+                                    transformer=SimpleImputer(fill_value='constant',
+                                                              strategy='constant'))),
+                ('low_variance',
+                 TransformerWrapper(exclude=[],
+                                    transformer=VarianceThreshold(threshold=0))),
+                ('trained_model',
+                 LogisticRegression(max_iter=1000, random_state=6626))]), probability_threshold=None, encoded_labels=False, raw_score=False, drift_report=False, round=4, verbose=True, ml_usecase=None, preprocess=True, replace_labels_in_column=<function _SupervisedExperiment.predict_model.<locals>.replace_labels_in_column at 0x00000189CDC58CA0>)
+2022-10-30 11:56:02,255:INFO:Checking exceptions
+2022-10-30 11:56:02,255:INFO:Preloading libraries
+2022-10-30 11:56:02,255:INFO:Set up data.
+2022-10-30 11:56:02,309:INFO:Set up index.
+2022-10-30 11:56:27,085:INFO:Initializing load_model()
+2022-10-30 11:56:27,085:INFO:load_model(model_name=lrmodelfile, platform=None, authentication=None, verbose=True)
+2022-10-30 11:56:27,109:INFO:Initializing predict_model()
+2022-10-30 11:56:27,109:INFO:predict_model(self=<pycaret.classification.oop.ClassificationExperiment object at 0x00000189CDF716F0>, estimator=Pipeline(memory=Memory(location=C:\Users\SANIDH~1\AppData\Local\Temp\joblib),
+         steps=[('label_encoding',
+                 TransformerWrapperWithInverse(transformer=LabelEncoder())),
+                ('numerical_imputer',
+                 TransformerWrapper(include=['itching', 'skin_rash',
+                                             'nodal_skin_eruptions',
+                                             'continuous_sneezing', 'shivering',
+                                             'chills', 'joint_pain',
+                                             'stomach_pain', 'acidity',
+                                             'ulcers_on_ton...
+                                             'breathlessness', 'sweating',
+                                             'dehydration', ...],
+                                    transformer=SimpleImputer())),
+                ('categorical_imputer',
+                 TransformerWrapper(include=[],
+                                    transformer=SimpleImputer(fill_value='constant',
+                                                              strategy='constant'))),
+                ('low_variance',
+                 TransformerWrapper(exclude=[],
+                                    transformer=VarianceThreshold(threshold=0))),
+                ('trained_model',
+                 LogisticRegression(max_iter=1000, random_state=6626))]), probability_threshold=None, encoded_labels=False, raw_score=False, drift_report=False, round=4, verbose=True, ml_usecase=None, preprocess=True, replace_labels_in_column=<function _SupervisedExperiment.predict_model.<locals>.replace_labels_in_column at 0x0000018984208040>)
+2022-10-30 11:56:27,109:INFO:Checking exceptions
+2022-10-30 11:56:27,109:INFO:Preloading libraries
+2022-10-30 11:56:27,109:INFO:Set up data.
+2022-10-30 11:56:27,157:INFO:Set up index.
+2022-10-30 11:56:53,470:INFO:Initializing load_model()
+2022-10-30 11:56:53,473:INFO:load_model(model_name=lrmodelfile, platform=None, authentication=None, verbose=True)
+2022-10-30 11:56:53,494:INFO:Initializing predict_model()
+2022-10-30 11:56:53,494:INFO:predict_model(self=<pycaret.classification.oop.ClassificationExperiment object at 0x00000189CDD66860>, estimator=Pipeline(memory=Memory(location=C:\Users\SANIDH~1\AppData\Local\Temp\joblib),
+         steps=[('label_encoding',
+                 TransformerWrapperWithInverse(transformer=LabelEncoder())),
+                ('numerical_imputer',
+                 TransformerWrapper(include=['itching', 'skin_rash',
+                                             'nodal_skin_eruptions',
+                                             'continuous_sneezing', 'shivering',
+                                             'chills', 'joint_pain',
+                                             'stomach_pain', 'acidity',
+                                             'ulcers_on_ton...
+                                             'breathlessness', 'sweating',
+                                             'dehydration', ...],
+                                    transformer=SimpleImputer())),
+                ('categorical_imputer',
+                 TransformerWrapper(include=[],
+                                    transformer=SimpleImputer(fill_value='constant',
+                                                              strategy='constant'))),
+                ('low_variance',
+                 TransformerWrapper(exclude=[],
+                                    transformer=VarianceThreshold(threshold=0))),
+                ('trained_model',
+                 LogisticRegression(max_iter=1000, random_state=6626))]), probability_threshold=None, encoded_labels=False, raw_score=False, drift_report=False, round=4, verbose=True, ml_usecase=None, preprocess=True, replace_labels_in_column=<function _SupervisedExperiment.predict_model.<locals>.replace_labels_in_column at 0x00000189CE3AA560>)
+2022-10-30 11:56:53,494:INFO:Checking exceptions
+2022-10-30 11:56:53,494:INFO:Preloading libraries
+2022-10-30 11:56:53,495:INFO:Set up data.
+2022-10-30 11:56:53,545:INFO:Set up index.
+2022-10-30 11:57:20,514:INFO:Initializing load_model()
+2022-10-30 11:57:20,514:INFO:load_model(model_name=lrmodelfile, platform=None, authentication=None, verbose=True)
+2022-10-30 11:57:20,535:INFO:Initializing predict_model()
+2022-10-30 11:57:20,535:INFO:predict_model(self=<pycaret.classification.oop.ClassificationExperiment object at 0x00000189CE453BB0>, estimator=Pipeline(memory=Memory(location=C:\Users\SANIDH~1\AppData\Local\Temp\joblib),
+         steps=[('label_encoding',
+                 TransformerWrapperWithInverse(transformer=LabelEncoder())),
+                ('numerical_imputer',
+                 TransformerWrapper(include=['itching', 'skin_rash',
+                                             'nodal_skin_eruptions',
+                                             'continuous_sneezing', 'shivering',
+                                             'chills', 'joint_pain',
+                                             'stomach_pain', 'acidity',
+                                             'ulcers_on_ton...
+                                             'breathlessness', 'sweating',
+                                             'dehydration', ...],
+                                    transformer=SimpleImputer())),
+                ('categorical_imputer',
+                 TransformerWrapper(include=[],
+                                    transformer=SimpleImputer(fill_value='constant',
+                                                              strategy='constant'))),
+                ('low_variance',
+                 TransformerWrapper(exclude=[],
+                                    transformer=VarianceThreshold(threshold=0))),
+                ('trained_model',
+                 LogisticRegression(max_iter=1000, random_state=6626))]), probability_threshold=None, encoded_labels=False, raw_score=False, drift_report=False, round=4, verbose=True, ml_usecase=None, preprocess=True, replace_labels_in_column=<function _SupervisedExperiment.predict_model.<locals>.replace_labels_in_column at 0x00000189CE3A8B80>)
+2022-10-30 11:57:20,535:INFO:Checking exceptions
+2022-10-30 11:57:20,535:INFO:Preloading libraries
+2022-10-30 11:57:20,535:INFO:Set up data.
+2022-10-30 11:57:20,589:INFO:Set up index.
